@@ -3,17 +3,17 @@
 #include <Arduino.h>
 
 struct DCMoterConfig {
-    DCMoterConfig(int dir_pin, int pwm_pin, int pwm_channel, int pwm_res) :
+    DCMoterConfig(uint8_t dir_pin, uint8_t pwm_pin, uint8_t pwm_channel, uint8_t pwm_res) :
     dir_pin     (dir_pin),
     pwm_pin     (pwm_pin),
     pwm_channel (pwm_channel),
     pwm_res     (pwm_res) {
 
     }
-    const int dir_pin;
-    const int pwm_pin;
-    const int pwm_channel;
-    const int pwm_res;
+    const uint8_t dir_pin;
+    const uint8_t pwm_pin;
+    const uint8_t pwm_channel;
+    const uint8_t pwm_res;
 };
 
 class DCMoter{

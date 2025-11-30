@@ -2,26 +2,24 @@
 #include <PS4Controller.h>
 #include "two_wheel_robo.hpp"
 
-namespace config{
-    const     char* PS4_BLE_ADDRESS {"test_str"};
-    constexpr int   DIR1            {15};
-    constexpr int   DIR2            {2};
-    constexpr int   PWM1            {0};
-    constexpr int   PWM2            {4};
-    constexpr int   PWM_CHANNEL1    {0};
-    constexpr int   PWM_CHANNEL2    {1};
-    constexpr int   PWM_FREQ        {1000};
-    constexpr int   PWM_RES         {8};
-}
+const     char*     PS4_BLE_ADDRESS {"test_str"};
+constexpr uint8_t   DIR1            {15};
+constexpr uint8_t   DIR2            {2};
+constexpr uint8_t   PWM1            {0};
+constexpr uint8_t   PWM2            {4};
+constexpr uint8_t   PWM_CHANNEL1    {0};
+constexpr uint8_t   PWM_CHANNEL2    {1};
+constexpr uint8_t   PWM_FREQ        {1000};
+constexpr uint8_t   PWM_RES         {8};
 
-DCMoterConfig right_wheel(config::DIR1, config::PWM1, config::PWM_CHANNEL1, config::PWM_RES);
-DCMoterConfig left_Wheel (config::DIR2, config::PWM2, config::PWM_CHANNEL2, config::PWM_RES);
+DCMoterConfig right_wheel(DIR1, PWM1, PWM_CHANNEL1, PWM_RES);
+DCMoterConfig left_Wheel (DIR2, PWM2, PWM_CHANNEL2, PWM_RES);
 TwoWheelRobo robo(right_wheel, left_Wheel);
 
 void setup() {
-    PS4.begin(config::PS4_BLE_ADDRESS);
-    ledcSetup(config::PWM_CHANNEL1, config::PWM_FREQ, config::PWM_RES);
-    ledcSetup(config::PWM_CHANNEL2, config::PWM_FREQ, config::PWM_RES);
+    PS4.begin(PS4_BLE_ADDRESS);
+    ledcSetup(PWM_CHANNEL1, PWM_FREQ, PWM_RES);
+    ledcSetup(PWM_CHANNEL2, PWM_FREQ, PWM_RES);
     robo.setup();
 }
 
