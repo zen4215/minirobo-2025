@@ -9,7 +9,7 @@ constexpr uint8_t   PWM1            {0};
 constexpr uint8_t   PWM2            {4};
 constexpr uint8_t   PWM_CHANNEL1    {0};
 constexpr uint8_t   PWM_CHANNEL2    {1};
-constexpr uint8_t   PWM_FREQ        {1000};
+constexpr uint16_t  PWM_FREQ        {1000};
 constexpr uint8_t   PWM_RES         {8};
 
 DCMoterConfig right_wheel(DIR1, PWM1, PWM_CHANNEL1, PWM_RES);
