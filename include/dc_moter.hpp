@@ -3,17 +3,20 @@
 #include <Arduino.h>
 
 struct DCMoterConfig {
-    DCMoterConfig(uint8_t dir_pin, uint8_t pwm_pin, uint8_t pwm_channel, uint8_t pwm_res) :
+    DCMoterConfig(uint8_t dir_pin, uint8_t pwm_pin, uint8_t pwm_channel, uint8_t pwm_res_bits) :
     dir_pin     (dir_pin),
     pwm_pin     (pwm_pin),
     pwm_channel (pwm_channel),
-    pwm_res     (pwm_res) {
-
+    pwm_res_bits(pwm_res_bits) {
+        int res{2};
+        for(int i = 0; i < pwm_res_bits - 1; i++) res *= 2;
+        pwm_res = res;
     }
     const uint8_t dir_pin;
     const uint8_t pwm_pin;
     const uint8_t pwm_channel;
-    const uint8_t pwm_res;
+    const uint8_t pwm_res_bits;
+    int           pwm_res;
 };
 
 class DCMoter{
@@ -39,8 +42,8 @@ void DCMoter::setup() {
 void DCMoter::move(bool dir, double duty) {
     if(dir) digitalWrite(m_config.dir_pin, HIGH);
     else digitalWrite(m_config.dir_pin, LOW);
-    
+ 
     duty *= m_config.pwm_res;
-
+    
     ledcWrite(m_config.pwm_channel, duty);
 }

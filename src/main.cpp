@@ -2,7 +2,7 @@
 #include <PS4Controller.h>
 #include "two_wheel_robo.hpp"
 
-const     char*     PS4_BLE_ADDRESS {"test_str"};
+const     char*     PS4_BLE_ADDRESS {"e4:65:b8:7e:12:1c"};
 constexpr uint8_t   DIR1            {15};
 constexpr uint8_t   DIR2            {2};
 constexpr uint8_t   PWM1            {0};
@@ -31,5 +31,5 @@ void loop() {
     run_y_v = PS4.LStickY();
     if(run_y_v < 10 && run_y_v > -10) run_y_v = 0;
     
-    robo.move(run_y_v / 255.0, run_x_v / 255.0);
+    robo.move(run_y_v / 127.0, run_x_v / 127.0);
 }

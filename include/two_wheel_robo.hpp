@@ -31,8 +31,8 @@ void TwoWheelRobo::move(double run_v, double turn_v) { // -1~1
     if(l_v > 1.0) l_v = 1.0;
     if(l_v < -1.0) l_v = -1.0;
     
-    if(r_v > 0) m_right_wheel.move(1, r_v);
-    else m_right_wheel.move(0, -r_v);
+    if(r_v > 0) m_right_wheel.move(0, r_v);
+    else m_right_wheel.move(1, -r_v);
     if(l_v > 0) m_left_wheel.move(0, l_v);
     else m_left_wheel.move(1, -l_v);
 }
